@@ -1,5 +1,6 @@
 package sample.cafekiosk.unit;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import sample.cafekiosk.unit.bevarage.Americano;
 import sample.cafekiosk.unit.bevarage.Beverage;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Slf4j
 public class Cafekiosk {
     private final List<Beverage> beverages = new ArrayList<>();
