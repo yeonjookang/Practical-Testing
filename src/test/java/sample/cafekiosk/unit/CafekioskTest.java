@@ -1,5 +1,6 @@
 package sample.cafekiosk.unit;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sample.cafekiosk.unit.bevarage.Americano;
 import sample.cafekiosk.unit.bevarage.Latte;
@@ -12,7 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CafekioskTest {
-
+    @DisplayName("음료를 1개를 추가하면 음료 리스트에 담긴다.")
     @Test
     void add() {
         Cafekiosk cafekiosk = new Cafekiosk();
@@ -70,15 +71,18 @@ class CafekioskTest {
         assertThat(cafekiosk.getBeverages()).isEmpty();
     }
 
+    @DisplayName("키오스크로 담은 음료 리스트를 주문할 수 있다.")
     @Test
     void createOrder(){
+        //given
         Cafekiosk cafekiosk = new Cafekiosk();
         Americano americano = new Americano();
 
+        //when
         cafekiosk.add(americano);
-
         Order order = cafekiosk.createOrder(LocalDateTime.of(2024,4,11,10,0));
 
+        //then
         assertThat(order.getBeverages()).hasSize(1);
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
